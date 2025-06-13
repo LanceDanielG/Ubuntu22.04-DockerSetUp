@@ -42,7 +42,7 @@ Open **Microsoft Store**, Search for: **Ubuntu 22.04** Click Install then Open t
 ### :white_check_mark: Set Up Ubuntu (First Run)
 
 You'll be promted to:  
-*Enter a new UNIX username
-*Enter and confirm a new password
+*  Enter a new UNIX username
+*  Enter and confirm a new password
 
 

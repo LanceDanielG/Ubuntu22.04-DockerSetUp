@@ -43,6 +43,50 @@ Open **Microsoft Store**, Search for: **Ubuntu 22.04** Click Install then Open t
 
 You'll be promted to:  
 *  Enter a new UNIX username
-*  Enter and confirm a new password
+*  Enter and confirm a new password  
+
+## > :information_source: Run this to Ubuntu 22.04 Terminal
+
+### :white_check_mark: Uninstall old versions
+> Before you can install Docker Engine, you need to uninstall any conflicting packages.
+
+```bash
+sudo apt remove docker docker-engine docker.io containerd runc
+```
+
+### :white_check_mark: Install Docker in Ubuntu
+
+`Update package info`
+```bash
+sudo apt update
+```
+
+`Install dependencies`
+```bash
+sudo apt install -y ca-certificates curl gnupg lsb-release
+```
+
+`Add Docker’s official GPG key`
+```bash
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | \
+  sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+```
+
+`Set up the repository`
+```bash
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+
+`Update and install Docker`
+```bash
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
 
 

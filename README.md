@@ -45,7 +45,7 @@ You'll be promted to:
 *  Enter a new UNIX username
 *  Enter and confirm a new password  
 
-## > :information_source: Run this to Ubuntu 22.04 Terminal
+## :information_source: Run this to Ubuntu 22.04 Terminal
 
 ### :white_check_mark: Uninstall old versions
 > Before you can install Docker Engine, you need to uninstall any conflicting packages.
@@ -88,5 +88,25 @@ sudo apt update
 sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
+## :white_check_mark: Run Docker Without `sudo`
+> :information_source: This allows you to run Docker commands without needing to prepend `sudo` every time.
+```bash
+sudo usermod -aG docker $USER
+newgrp docker
+```
 
+## :information_source: Optional Tools to the Set Up
+`Install Git`
+```bash
+sudo apt install git
+```
 
+`Install NVM and Node`
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+nvm install --lts
+```
+
+## 📌 Tip: Launch Ubuntu & VS Code Easily
+> You can install WSL extension in VS Code and work in your WSL Ubuntu environment seamlessly.

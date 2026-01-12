@@ -101,6 +101,18 @@ newgrp docker
 sudo apt install git
 ```
 
+`Configure Git`
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+```
+
+`Generate SSH Key`
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+cat ~/.ssh/id_ed25519.pub
+```
+
 `Install NVM and Node`
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash

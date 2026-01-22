@@ -118,7 +118,7 @@ cat ~/.ssh/id_ed25519.pub
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 source ~/.bashrc
 nvm install --lts
-nvm alias default lts/*
+nvm alias default node
 ```
 
 ### :rocket: Tip: Auto-switch Node Version

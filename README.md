@@ -118,7 +118,60 @@ cat ~/.ssh/id_ed25519.pub
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 source ~/.bashrc
 nvm install --lts
+nvm alias default lts/*
 ```
+
+### :rocket: Tip: Auto-switch Node Version
+> Add this to your shell configuration (`~/.bashrc` or `~/.zshrc`) to automatically switch Node versions when you `cd` into a directory with an `.nvmrc` file.
+
+**Bash (Default for Ubuntu)**
+Run this command to append the configuration to your `~/.bashrc` and reload it:
+```bash
+cat << 'EOF' >> ~/.bashrc
+
+# Auto-switch Node Version
+cdnvm() {
+    cd "$@";
+    nvm_path=$(nvm_find_nvmrc);
+    if [ -n "$nvm_path" ]; then
+        nvm use || nvm install;
+    fi
+}
+alias cd='cdnvm'
+EOF
+source ~/.bashrc
+```
+
+**Zsh (Alternative Shell)**
+Run this command to append the configuration to your `~/.zshrc` and reload it:
+```bash
+cat << 'EOF' >> ~/.zshrc
+
+# Auto-switch Node Version
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local node_version="$(nvm version)"
+  local nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -f "$nvmrc_path" ]; then
+    local nvmrc_node_version=$(nvm version "$(cat "$nvmrc_path")")
+    if [ "$nvmrc_node_version" != "$node_version" ]; then
+      nvm use || nvm install
+    fi
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
+EOF
+source ~/.zshrc
+```
+
+### :memo: How to create an `.nvmrc` file
+Run this command in your project root to pin the current Node version:
+```bash
+node -v > .nvmrc
+```
+*Now, whenever you or anyone else `cd`s into this directory, the auto-switch script will ensure the correct Node version is used.*
 
 ## 📌 Tip: Launch Ubuntu & VS Code Easily
 > You can install WSL extension in VS Code and work in your WSL Ubuntu environment seamlessly.

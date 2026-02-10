@@ -39,6 +39,14 @@ wsl -l -v
 
 Open **Microsoft Store**, Search for: **Ubuntu 22.04** Click Install then Open to launch it.
 
+### :information_source: Alternative way to Install (Command Line)
+> If you prefer the terminal or don't have access to the Store app:
+
+```bash
+wsl --list --online
+wsl --install -d Ubuntu-22.04
+```
+
 ### :white_check_mark: Set Up Ubuntu (First Run)
 
 You'll be promted to:  
@@ -93,6 +101,12 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 ```bash
 sudo usermod -aG docker $USER
 newgrp docker
+```
+
+## :white_check_mark: Check if Docker is running
+> Run the `hello-world` image to verify that Docker is correctly installed and configured.
+```bash
+docker run hello-world
 ```
 
 ## :information_source: Optional Tools to the Set Up
